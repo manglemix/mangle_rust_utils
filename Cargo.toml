@@ -7,4 +7,3 @@ edition = "2021"
 
 [dependencies]
 async-recursion = "1.0.0"
-#simple-logger = { path = "../simple_logger" }
