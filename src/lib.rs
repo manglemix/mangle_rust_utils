@@ -7,6 +7,27 @@ use std::hash::Hash;
 
 use async_recursion::async_recursion;
 
+
+/// Similar to vec!, but allocates a HashSet instead
+#[macro_export]
+macro_rules! set {
+    ($($arg: tt),*) => {{
+		let mut size = 0;
+
+		$(
+			size += 1;
+			$arg;
+		)*
+		let mut set = std::collections::HashSet::with_capacity(size);
+		$(
+			set.insert($arg);
+		)*
+
+		set
+	}};
+}
+
+
 #[cfg(debug_assertions)]
 #[macro_export]
 macro_rules! bad_exit {
